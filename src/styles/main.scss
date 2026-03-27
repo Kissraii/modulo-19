@@ -1,0 +1,128 @@
+// Variáveis de cores
+$primary-color: #3498db;
+$highlight-color: #f39c12;
+$text-color: #333;
+$bg-color: #f5f5f5;
+$white: #ffffff;
+$gray-light: #666;
+
+// Estilos Globais
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: $bg-color;
+    margin: 0;
+    padding: 0;
+}
+
+// Bloco: products
+.products {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    // Elemento: title
+    &__title {
+        text-align: center;
+        margin-bottom: 40px;
+        color: $text-color;
+        font-size: 2.5rem;
+    }
+
+    // Elemento: container
+    &__container {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+// Bloco: product
+.product {
+    background-color: $white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    // Elemento: image
+    &__image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        background-color: #eee;
+    }
+
+    // Elemento: name
+    &__name {
+        margin: 15px 0 10px;
+        color: $text-color;
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    // Elemento: description
+    &__description {
+        font-size: 0.95rem;
+        color: $gray-light;
+        margin-bottom: 20px;
+        line-height: 1.5;
+        height: 3rem;
+        overflow: hidden;
+    }
+
+    // Elemento: button
+    &__button {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: $primary-color;
+        color: $white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: darken($primary-color, 10%);
+        }
+    }
+
+    // Modificador: --highlight
+    &--highlight {
+        border: 2px solid $highlight-color;
+        background-color: lighten($highlight-color, 42%);
+        position: relative;
+
+        // Estilo específico para o botão dentro do modificador highlight
+        .product__button {
+            background-color: $highlight-color;
+
+            &:hover {
+                background-color: darken($highlight-color, 10%);
+            }
+        }
+
+        // Pequeno selo de destaque (opcional, para visual)
+        &::before {
+            content: 'Destaque';
+            position: absolute;
+            top: -12px;
+            right: 10px;
+            background-color: $highlight-color;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+    }
+}
